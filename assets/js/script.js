@@ -1,9 +1,96 @@
-var lower = "abcdefghijklmnopqrstuvwxyz";
+var lower = [
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+  "f",
+  "g",
+  "h",
+  "i",
+  "j",
+  "k",
+  "l",
+  "m",
+  "n",
+  "o",
+  "p",
+  "q",
+  "r",
+  "s",
+  "t",
+  "u",
+  "v",
+  "w",
+  "x",
+  "y",
+  "z",
+];
 
-var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var num = "0123456789";
+var upper = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+];
+var num = [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+];
 
-var special = "!@#$%^&*()-_+={[}]?<>";
+var special = [
+  "!",
+  "@",
+  "#",
+  "$",
+  "%",
+  "^",
+  "&",
+  "*",
+  "(",
+  ")",
+  "-",
+  "_",
+  "+",
+  "=",
+  "{",
+  "[",
+  "}",
+  "]",
+  "?",
+  "<",
+  ">",
+];
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
@@ -40,35 +127,36 @@ function writePassword() {
   var collection = [];
   if (userLower === true) {
     collection = collection.concat(lower);
-    console.log(collection);
   }
   if (userUpper === true) {
     collection = collection.concat(upper);
-    console.log(collection);
   }
   if (userNum === true) {
     collection = collection.concat(num);
-    console.log(collection);
   }
   if (userSpecial === true) {
     collection = collection.concat(special);
-    console.log(collection);
   }
   // you can create a function named generatePassword that creates the password
   function generatePassword(passwordLength, collection) {
+    var passwordText = "";
     for (var i = 0; i < passwordLength; i++) {
-      var passwordText =
+      passwordText +=
         collection[
           Math.floor(Math.random() * collection.length)
         ];
-      passwordText += collection.charAt(passwordText);
-      return passwordText;
     }
+    return passwordText;
   }
 
-  var passwordText = document.querySelector("#password");
+  var passwordTextField = document.querySelector(
+    "#password"
+  );
 
-  passwordText.value = password;
+  passwordTextField.value = generatePassword(
+    passwordLength,
+    collection
+  );
 }
 
 // Add event listener to generate button
